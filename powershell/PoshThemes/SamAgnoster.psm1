@@ -1,5 +1,4 @@
 #requires -Version 2 -Modules posh-git
-
 function Write-Theme
 {
     param(
@@ -11,6 +10,7 @@ function Write-Theme
 
     $lastColor = $sl.Colors.PromptBackgroundColor
 
+    $status = Get-VCSStatus
     Write-Prompt -Object $sl.PromptSymbols.StartSymbol -ForegroundColor $sl.Colors.SessionInfoForegroundColor -BackgroundColor $sl.Colors.PromptBackgroundColor
 
     #check the last command state and indicate if failed
@@ -26,10 +26,17 @@ function Write-Theme
     }
 
     # Writes the drive portion
-    Write-Prompt -Object (Get-ShortPath -dir $pwd) -ForegroundColor $sl.Colors.PromptForegroundColor -BackgroundColor $sl.Colors.PromptBackgroundColor
+    if ($status)
+    {
+        $rootPath = Split-Path -Parent $status.GitDir
+        $gitRepoName = [System.IO.Path]::GetFileName($rootPath)
+        Write-Prompt -Object $pwd.Path.Replace($rootPath, $gitRepoName) -ForegroundColor $sl.Colors.PromptForegroundColor -BackgroundColor $sl.Colors.PromptBackgroundColor
+    } else {
+        Write-Prompt -Object (Get-ShortPath -dir $pwd) -ForegroundColor $sl.Colors.PromptForegroundColor -BackgroundColor $sl.Colors.PromptBackgroundColor
+    }
+    
     Write-Prompt -Object ' ' -ForegroundColor $sl.Colors.PromptForegroundColor -BackgroundColor $sl.Colors.PromptBackgroundColor
 
-    $status = Get-VCSStatus
     if ($status)
     {
         $themeInfo = Get-VcsInfo -status ($status)
