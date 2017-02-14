@@ -58,7 +58,7 @@ function Write-Theme
 
 $sl = $global:ThemeSettings #local settings
 $sl.PromptSymbols.SegmentForwardSymbol = [char]::ConvertFromUtf32(0xE0B0)
-$sl.Colors.PromptForegroundColor = [ConsoleColor]::White
+$sl.Colors.PromptForegroundColor = [ConsoleColor]::Black
 $sl.Colors.PromptSymbolColor = [ConsoleColor]::White
 $sl.Colors.PromptHighlightColor = [ConsoleColor]::DarkBlue
 $sl.Colors.GitForegroundColor = [ConsoleColor]::Black
