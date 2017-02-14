@@ -11,3 +11,9 @@ Get-ChildItem -File powershell | ForEach-Object {
     $symPath = Join-Path $profileDir $_.Name 
     cmd /c mklink "$symPath" $_.FullName
 }
+
+# Symbolic link all files in conemu/
+Get-ChildItem -File conemu | ForEach-Object {
+    $symPath = Join-Path %appdata% $_.Name 
+    cmd /c mklink "$symPath" $_.FullName
+}
