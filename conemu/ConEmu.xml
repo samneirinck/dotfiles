@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <key name="Software">
 	<key name="ConEmu">
-		<key name=".Vanilla" modified="2017-02-14 22:23:44" build="170118">
+		<key name=".Vanilla" modified="2017-02-15 07:59:44" build="170118">
 			<value name="StartType" type="hex" data="02"/>
 			<value name="CmdLine" type="string" data=""/>
 			<value name="StartTasksFile" type="string" data=""/>
@@ -96,7 +96,9 @@
 			<value name="StoreTaskbarCommands" type="hex" data="01"/>
 			<value name="JumpListAutoUpdate" type="hex" data="01"/>
 			<value name="SaveCmdHistory" type="hex" data="01"/>
-			<value name="CmdLineHistory" type="multi"/>
+			<value name="CmdLineHistory" type="multi">
+				<line data="&quot;C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe&quot;"/>
+			</value>
 			<value name="SingleInstance" type="hex" data="00"/>
 			<value name="ShowHelpTooltips" type="hex" data="01"/>
 			<value name="Multi" type="hex" data="01"/>
@@ -122,12 +124,12 @@
 			<value name="FontName" type="string" data="Menlo for Powerline"/>
 			<value name="FontName2" type="string" data="Consolas"/>
 			<value name="FontAutoSize" type="hex" data="00"/>
-			<value name="FontSize" type="ulong" data="13"/>
-			<value name="FontSizeX" type="ulong" data="0"/>
+			<value name="FontSize" type="ulong" data="12"/>
+			<value name="FontSizeX" type="ulong" data="6"/>
 			<value name="FontUseDpi" type="hex" data="01"/>
 			<value name="FontUseUnits" type="hex" data="01"/>
 			<value name="FontSizeX2" type="ulong" data="0"/>
-			<value name="FontSizeX3" type="ulong" data="0"/>
+			<value name="FontSizeX3" type="ulong" data="6"/>
 			<value name="FontCharSet" type="hex" data="01"/>
 			<value name="Anti-aliasing" type="ulong" data="6"/>
 			<value name="FontBold" type="hex" data="00"/>
@@ -151,11 +153,11 @@
 			<value name="Cascaded" type="hex" data="01"/>
 			<value name="IntegralSize" type="hex" data="00"/>
 			<value name="WindowMode" type="dword" data="0000051f"/>
-			<value name="ConWnd X" type="long" data="1139"/>
-			<value name="ConWnd Y" type="long" data="738"/>
-			<value name="LastMonitor" type="string" data="0,0,2560,1390"/>
-			<value name="ConWnd Width" type="dword" data="0000004f"/>
-			<value name="ConWnd Height" type="dword" data="00000025"/>
+			<value name="ConWnd X" type="long" data="2819"/>
+			<value name="ConWnd Y" type="long" data="470"/>
+			<value name="LastMonitor" type="string" data="2560,0,5120,1390"/>
+			<value name="ConWnd Width" type="dword" data="00000082"/>
+			<value name="ConWnd Height" type="dword" data="0000001c"/>
 			<value name="16bit Height" type="ulong" data="0"/>
 			<value name="QuakeStyle" type="hex" data="00"/>
 			<value name="Restore2ActiveMon" type="hex" data="00"/>
@@ -400,7 +402,7 @@
 			<value name="Update.DownloadPath" type="string" data="%TEMP%\ConEmu"/>
 			<value name="Update.LeavePackages" type="hex" data="00"/>
 			<value name="Update.PostUpdateCmd" type="string" data="echo Last successful update&gt;ConEmuUpdate.info &amp;&amp; date /t&gt;&gt;ConEmuUpdate.info &amp;&amp; time /t&gt;&gt;ConEmuUpdate.info"/>
-			<key name="HotKeys" modified="2017-02-14 22:23:44" build="170118">
+			<key name="HotKeys" modified="2017-02-15 07:59:44" build="170118">
 				<value name="KeyMacroVersion" type="hex" data="02"/>
 				<value name="Multi.Modifier" type="dword" data="0000005b"/>
 				<value name="Multi.ArrowsModifier" type="dword" data="0000005b"/>
@@ -585,9 +587,9 @@
 				<value name="DndRKey" type="hex" data="a2"/>
 				<value name="WndDragKey" type="dword" data="00121101"/>
 			</key>
-			<key name="Tasks" modified="2017-02-14 22:23:44" build="170118">
+			<key name="Tasks" modified="2017-02-15 07:59:44" build="170118">
 				<value name="Count" type="long" data="5"/>
-				<key name="Task1" modified="2017-02-14 22:23:44" build="170118">
+				<key name="Task1" modified="2017-02-15 07:59:44" build="170118">
 					<value name="Name" type="string" data="{Shells::cmd}"/>
 					<value name="Flags" type="dword" data="00000000"/>
 					<value name="Hotkey" type="dword" data="00000000"/>
@@ -596,7 +598,7 @@
 					<value name="Active" type="long" data="0"/>
 					<value name="Count" type="long" data="1"/>
 				</key>
-				<key name="Task2" modified="2017-02-14 22:23:44" build="170118">
+				<key name="Task2" modified="2017-02-15 07:59:44" build="170118">
 					<value name="Name" type="string" data="{Shells::cmd (Admin)}"/>
 					<value name="Flags" type="dword" data="00000000"/>
 					<value name="Hotkey" type="dword" data="00000000"/>
@@ -605,7 +607,7 @@
 					<value name="Active" type="long" data="0"/>
 					<value name="Count" type="long" data="1"/>
 				</key>
-				<key name="Task3" modified="2017-02-14 22:23:44" build="170118">
+				<key name="Task3" modified="2017-02-15 07:59:44" build="170118">
 					<value name="Name" type="string" data="{Shells::PowerShell}"/>
 					<value name="Flags" type="dword" data="00000002"/>
 					<value name="Hotkey" type="dword" data="00000000"/>
@@ -614,7 +616,7 @@
 					<value name="Active" type="long" data="0"/>
 					<value name="Count" type="long" data="1"/>
 				</key>
-				<key name="Task4" modified="2017-02-14 22:23:44" build="170118">
+				<key name="Task4" modified="2017-02-15 07:59:44" build="170118">
 					<value name="Name" type="string" data="{Shells::PowerShell (Admin)}"/>
 					<value name="Flags" type="dword" data="00000000"/>
 					<value name="Hotkey" type="dword" data="00000000"/>
@@ -623,7 +625,7 @@
 					<value name="Active" type="long" data="0"/>
 					<value name="Count" type="long" data="1"/>
 				</key>
-				<key name="Task5" modified="2017-02-14 22:23:44" build="170118">
+				<key name="Task5" modified="2017-02-15 07:59:44" build="170118">
 					<value name="Name" type="string" data="{Bash::bash}"/>
 					<value name="Flags" type="dword" data="00000000"/>
 					<value name="Hotkey" type="dword" data="00000000"/>
@@ -633,10 +635,10 @@
 					<value name="Count" type="long" data="1"/>
 				</key>
 			</key>
-			<key name="Apps" modified="2017-02-14 22:23:44" build="170118">
+			<key name="Apps" modified="2017-02-15 07:59:44" build="170118">
 				<value name="Count" type="long" data="0"/>
 			</key>
-			<key name="Colors" modified="2017-02-14 22:23:44" build="170118">
+			<key name="Colors" modified="2017-02-15 07:59:44" build="170118">
 				<value name="Count" type="long" data="0"/>
 			</key>
 		</key>
