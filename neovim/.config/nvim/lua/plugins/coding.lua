@@ -30,4 +30,7 @@ return {
 			'rafamadriz/friendly-snippets',
 		},
 	},
+
+	-- Copilot
+	{'github/copilot.vim'},
 }
