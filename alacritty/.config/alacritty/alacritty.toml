@@ -1,0 +1,8 @@
+[window]
+opacity = 0.95
+blur = true
+
+[font]
+normal = { family = "MesloLGS Nerd Font" }
+size = 14
+
