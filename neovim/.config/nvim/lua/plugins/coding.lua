@@ -1,7 +1,8 @@
 return {
-	{ 'tpope/vim-fugitive'},
+	{ 'tpope/vim-fugitive' },
 	-- LSP Configuration & Plugins
-	{'neovim/nvim-lspconfig',
+	{
+		'neovim/nvim-lspconfig',
 		dependencies = {
 			-- Automatically install LSPs to stdpath for neovim
 			'williamboman/mason.nvim',
@@ -17,7 +18,8 @@ return {
 	},
 
 	-- Autocompletion
-	{'hrsh7th/nvim-cmp',
+	{
+		'hrsh7th/nvim-cmp',
 		dependencies = {
 			-- Snippet Engine & its associated nvim-cmp source
 			'L3MON4D3/LuaSnip',
@@ -32,5 +34,21 @@ return {
 	},
 
 	-- Copilot
-	{'github/copilot.vim'},
+	{ 'github/copilot.vim' },
+
+
+	-- Copilot chat
+	{
+		'CopilotC-Nvim/CopilotChat.nvim',
+		branch = 'canary',
+		dependencies = {
+			{ 'github/copilot.vim' },
+			{ "nvim-lua/plenary.nvim" }, -- for curl, log wrapper
+		},
+		opts = {
+			debug = true,
+		}
+	}
+
+
 }
