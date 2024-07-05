@@ -1,8 +1,12 @@
+import = [ 
+  "~/.config/alacritty/catppuccin-mocha.toml"
+]
+
 [window]
 opacity = 0.95
 blur = true
 
 [font]
-normal = { family = "MesloLGS Nerd Font" }
+normal = { family = "MesloLGS Nerd Font Mono" }
 size = 14
 
