@@ -5,7 +5,7 @@
 
 ```bash
 cd ~/dotfiles
-stow neovim
-stow fish
+stow --target ~/ neovim
+stow --target ~/ fish
 ...
 ```
