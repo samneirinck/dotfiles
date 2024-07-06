@@ -15,7 +15,7 @@ exec --no-startup-id picom
 
 # Set keyboard repeat rate 
 exec --no-startup-id xset r rate 200 35
-
+exec --no-startup-id setxkbmap -option 'caps:ctrl_modifier' 
 exec --no-startup-id feh --bg-scale ~/backgrounds/a_foggy_landscape_with_trees_and_grass.jpg
 
 # Font for window titles. Will also be used by the bar unless a different font
