@@ -29,10 +29,17 @@ return {
       -- [[ Configure Telescope ]]
       -- See `:help telescope` and `:help telescope.setup()`
       require('telescope').setup {
+        defaults = {
+        },
         extensions = {
           ['ui-select'] = {
             require('telescope.themes').get_dropdown(),
           },
+        },
+        pickers = {
+          find_files = {
+            hidden = true,
+          }
         },
       }
 
