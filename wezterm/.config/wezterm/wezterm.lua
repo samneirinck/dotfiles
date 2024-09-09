@@ -99,7 +99,7 @@ config.hyperlink_rules = wezterm.default_hyperlink_rules()
 
 -- make task numbers clickable
 table.insert(config.hyperlink_rules, {
-  regex = [[\b(SP-\d+)\b]], -- https://showpad.atlassian.net/browse/SP-18316
+  regex = [[\b(SP-\d+)\b]],
   format = 'https://showpad.atlassian.net/browse/$1',
 })
 
