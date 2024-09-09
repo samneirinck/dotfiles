@@ -56,6 +56,12 @@ config.keys = {
     mods = "LEADER",
     action = wezterm.action.SplitVertical { domain = 'CurrentPaneDomain' }
   },
+  {
+    key = "s",
+    mods = "LEADER",
+    action = wezterm.action.ShowLauncherArgs { flags = "FUZZY|WORKSPACES", title = "Workspaces" }
+  },
+
   -- Pane navigation
   move_pane('j', 'Down'),
   move_pane('k', 'Up'),
