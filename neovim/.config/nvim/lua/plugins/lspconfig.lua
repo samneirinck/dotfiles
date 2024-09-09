@@ -9,11 +9,11 @@ return {
 
       -- Useful status updates for LSP.
       -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
-      { 'j-hui/fidget.nvim', opts = {} },
+      { 'j-hui/fidget.nvim',       opts = {} },
 
       -- `neodev` configures Lua LSP for your Neovim config, runtime and plugins
       -- used for completion, annotations and signatures of Neovim apis
-      { 'folke/neodev.nvim', opts = {} },
+      { 'folke/neodev.nvim',       opts = {} },
     },
     config = function()
       --    That is to say, every time a new file is opened that is associated with
@@ -135,8 +135,8 @@ return {
         gopls = {},
         pyright = {},
         phpactor = {},
-        tsserver = {},
-        html = { filetypes = { 'html', 'twig', 'hbs'} },
+        ts_ls= {},
+        html = { filetypes = { 'html', 'twig', 'hbs' } },
         templ = {},
         lua_ls = {
           -- cmd = {...},
