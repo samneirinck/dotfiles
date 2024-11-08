@@ -25,6 +25,13 @@ return {
 				end,
 			})
 		end,
+		opts = {
+			model = 'claude-3.5-sonnet',
+			question_header = '## 🧙 Sam ',
+			answer_header = '## 🤖 Copilot ',
+			error_header = '## 🚨 Error ',
+
+		},
 		keys = {
 			{
 				'<leader>aq',
