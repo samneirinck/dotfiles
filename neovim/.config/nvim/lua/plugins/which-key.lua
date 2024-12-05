@@ -10,6 +10,7 @@ return {
         { '<leader>w', group = 'Workspace' },
         { '<leader>t', group = 'Toggle' },
         { '<leader>h', group = 'Git Hunk' },
+        { '<leader>a', group = 'AI' },
       },
     },
   },
