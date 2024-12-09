@@ -47,5 +47,5 @@ vim.opt.inccommand = 'split'
 
 vim.opt.cursorline = true
 
-vim.shiftwidth = 4
+vim.opt.shiftwidth = 4
 
