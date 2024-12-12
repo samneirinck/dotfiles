@@ -15,7 +15,7 @@ return {
       { 'nvim-telescope/telescope-ui-select.nvim' },
 
       -- Useful for getting pretty icons, but requires a Nerd Font.
-      { 'nvim-tree/nvim-web-devicons', enabled = vim.g.have_nerd_font },
+      { 'nvim-tree/nvim-web-devicons',            enabled = vim.g.have_nerd_font },
     },
     config = function()
       -- Two important keymaps to use while in Telescope are
@@ -43,21 +43,25 @@ return {
             fuzzy = true,
             override_generic_sorter = true,
             override_file_sorter = true,
-            case_mode = 'smart',
           }
         },
         pickers = {
           find_files = {
             hidden = true,
+            follow = true,
           },
           live_grep = {
+            glob_pattern = "!package-lock.json",
             additional_args = { '--hidden' },
           },
         },
       }
 
+      require('telescope').load_extension('fzf')
+
       -- See `:help telescope.builtin`
       local builtin = require 'telescope.builtin'
+
       vim.keymap.set('n', '<leader>fa', builtin.find_files, { desc = '[F]ind [A]ll files' })
       vim.keymap.set('n', '<leader>ff', builtin.git_files, { desc = '[F]ind [F]iles' })
       vim.keymap.set('n', '<leader>f.', builtin.oldfiles, { desc = '[F]ind Recent Files ("." for repeat)' })
@@ -91,7 +95,7 @@ return {
 
       -- Shortcut for searching your Neovim configuration files
       vim.keymap.set('n', '<leader>fn', function()
-        builtin.find_files { cwd = vim.fn.stdpath 'config' }
+        builtin.find_files { cwd = vim.fn.stdpath('config') }
       end, { desc = '[F]ind [N]eovim files' })
     end,
   },

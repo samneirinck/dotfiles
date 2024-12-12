@@ -129,7 +129,7 @@ return {
         gopls = {},
         pyright = {},
         phpactor = {},
-        ts_ls= {},
+        ts_ls = {},
         html = { filetypes = { 'html', 'twig', 'hbs' } },
         templ = {},
         lua_ls = {
