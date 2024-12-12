@@ -47,7 +47,7 @@ return {
         },
         pickers = {
           find_files = {
-            hidden = true,
+            -- hidden = true,
             follow = true,
           },
           live_grep = {
@@ -71,7 +71,7 @@ return {
       vim.keymap.set('n', '<leader>fk', builtin.keymaps, { desc = '[F]ind [K]eymaps' })
       vim.keymap.set('n', '<leader>fs', builtin.builtin, { desc = '[F]ind [S]elect Telescope' })
       vim.keymap.set('n', '<leader>fw', builtin.grep_string, { desc = '[F]ind current [W]ord' })
-      vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = '[F]ind by [G]rep' })
+      -- vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = '[F]ind by [G]rep' })
       vim.keymap.set('n', '<leader>fr', builtin.resume, { desc = '[F]ind [R]esume' })
       vim.keymap.set('n', '<leader><leader>', builtin.buffers, { desc = '[ ] Find existing buffers' })
 
@@ -93,10 +93,75 @@ return {
         }
       end, { desc = '[F]ind [/] in Open Files' })
 
-      -- Shortcut for searching your Neovim configuration files
       vim.keymap.set('n', '<leader>fn', function()
         builtin.find_files { cwd = vim.fn.stdpath('config') }
       end, { desc = '[F]ind [N]eovim files' })
+
+      vim.keymap.set('n', '<leader>fp', function()
+        builtin.find_files { cwd = vim.fs.joinpath(vim.fn.stdpath('data'), "lazy") }
+      end, { desc = '[F]ind [P]lugins' })
+
+
+      vim.keymap.set('n', '<leader>fg', function()
+        local pickers = require("telescope.pickers")
+        local finders = require("telescope.finders")
+        local sorters = require("telescope.sorters")
+        local make_entry = require("telescope.make_entry")
+        local conf = require("telescope.config").values
+
+        local opts = {}
+        opts.cwd = vim.uv.cwd()
+
+        local finder = finders.new_async_job {
+          command_generator = function(prompt)
+            if not prompt or prompt == "" then
+              return nil
+            end
+
+            local args = { "rg", }
+            local search_prompt = prompt
+            for term in string.gmatch(prompt, "[^ ]+:[^ ]+") do
+              local pieces = vim.split(term, ":")
+
+              local keyword = pieces[1]
+              local value = pieces[2]
+
+              if keyword == "file" then
+                table.insert(args, "--glob")
+                table.insert(args, value)
+              elseif keyword == "ext" then
+                table.insert(args, "--glob")
+                table.insert(args, "*." .. value)
+              end
+
+              local escaped_term = term:gsub("([^%w])", "%%%1")
+              search_prompt = search_prompt:gsub("%s*" .. escaped_term .. "%s*", "")
+            end
+
+            table.insert(args, "-e")
+            table.insert(args, search_prompt)
+
+            ---@diagnostic disable-next-line: deprecated
+            local cmd = vim.tbl_flatten {
+              args,
+              { "--color=never", "--no-heading", "--with-filename", "--line-number", "--column", "--smart-case" }
+            }
+
+            return cmd
+          end,
+          entry_maker = make_entry.gen_from_vimgrep(opts),
+          cmd = opts.cwd,
+        }
+
+        pickers.new(opts, {
+          debounce = 100,
+          prompt_title = "Live Grep",
+          finder = finder,
+          previewer = conf.grep_previewer(opts),
+          sorter = sorters.empty(),
+        }):find()
+      end, { desc = '[F]ind [Y]Fancy' })
     end,
   },
 }
+-- Shortcut for searching your Neovim configuration files
