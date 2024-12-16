@@ -63,6 +63,7 @@ return {
       local builtin = require 'telescope.builtin'
 
       vim.keymap.set('n', '<leader>fa', builtin.find_files, { desc = '[F]ind [A]ll files' })
+      vim.keymap.set('n', '<leader>fb', builtin.git_branches, { desc = '[F]ind [B]ranches' })
       vim.keymap.set('n', '<leader>ff', builtin.git_files, { desc = '[F]ind [F]iles' })
       vim.keymap.set('n', '<leader>f.', builtin.oldfiles, { desc = '[F]ind Recent Files ("." for repeat)' })
       vim.keymap.set('n', '<leader>fd', builtin.lsp_document_symbols, { desc = '[F]ind [D]ocument Symbols' })
