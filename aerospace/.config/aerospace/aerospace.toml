@@ -199,6 +199,12 @@ if.app-id = 'org.mozilla.firefox'
 if.window-title-regex-substring = 'Picture-in-Picture'
 run = 'layout floating'
 
+# Ghostty tabs are breaking some things
+[[on-window-detected]]
+if.app-id = "com.mitchellh.ghostty"
+check-further-callbacks = true
+run = "layout floating"
+
 [[on-window-detected]]
 if.app-id = 'org.mozilla.librewolf'
 if.window-title-regex-substring = 'Picture-in-Picture'
