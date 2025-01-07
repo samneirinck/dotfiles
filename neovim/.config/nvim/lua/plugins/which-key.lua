@@ -11,6 +11,7 @@ return {
         { '<leader>t', group = 'Toggle' },
         { '<leader>h', group = 'Git Hunk' },
         { '<leader>a', group = 'AI' },
+        { '<leader>g', group = 'Git' },
       },
     },
   },
