@@ -1,6 +1,7 @@
 return {
 	{
 		'vim-test/vim-test',
+		enabled = false,
 		config = function()
 			vim.keymap.set("n", "<leader>tt", ":TestNearest<CR>", {})
 			vim.keymap.set("n", "<leader>tT", ":TestFile<CR>", {})
@@ -13,4 +14,13 @@ return {
 			'docker --log-level ERROR compose -f ../docker-compose.yml -f docker-compose.yml exec centralstation bin/phpunit --config app/phpunit.xml.dist'
 		end,
 	},
+	{
+		"nvim-neotest/neotest",
+		dependencies = {
+			"nvim-neotest/nvim-nio",
+			"nvim-lua/plenary.nvim",
+			"antoinemadec/FixCursorHold.nvim",
+			"nvim-treesitter/nvim-treesitter"
+		}
+	}
 }
