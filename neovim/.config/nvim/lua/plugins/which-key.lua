@@ -8,7 +8,7 @@ return {
         { '<leader>r', group = 'Rename' },
         { '<leader>f', group = 'Find' },
         { '<leader>w', group = 'Workspace' },
-        { '<leader>t', group = 'Toggle' },
+        { '<leader>t', group = 'Test' },
         { '<leader>h', group = 'Git Hunk' },
         { '<leader>a', group = 'AI' },
         { '<leader>g', group = 'Git' },
