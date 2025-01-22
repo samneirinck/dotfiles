@@ -1,12 +1,12 @@
 local wezterm = require 'wezterm'
+local sessionizer = require 'sessionizer'
 local config = wezterm.config_builder()
 
 config.color_scheme = "Catppuccin Mocha"
 
 config.font = wezterm.font({ family = "MesloLGS Nerd Font Mono" })
-config.font_size = 12
+config.font_size = 14
 
-config.window_background_opacity = 0.95
 config.window_decorations = "RESIZE"
 config.window_frame = {
   font = config.font
@@ -14,9 +14,9 @@ config.window_frame = {
 }
 config.hide_tab_bar_if_only_one_tab = true
 config.window_padding = {
-  left = 0,
-  right = 0,
-  top = 0,
+  left = 5,
+  right = 5,
+  top = 5,
   bottom = 0
 }
 
@@ -95,9 +95,14 @@ config.keys = {
     action = wezterm.action.TogglePaneZoomState
   },
   {
-    key = "s",
+    key = "q",
     mods = "LEADER",
     action = wezterm.action.ShowLauncherArgs { flags = "FUZZY|WORKSPACES", title = "Workspaces" }
+  },
+  {
+    key = "s",
+    mods = "LEADER",
+    action = wezterm.action_callback(sessionizer.toggle)
   },
 
   -- move between split panes
