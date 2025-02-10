@@ -22,11 +22,26 @@ return {
 			"antoinemadec/FixCursorHold.nvim",
 			"nvim-treesitter/nvim-treesitter",
 			"nvim-neotest/neotest-python",
+			"olimorris/neotest-phpunit"
 		},
 		config = function()
 			require("neotest").setup({
 				adapters = {
-					require("neotest-python")
+					require("neotest-python"),
+					require("neotest-phpunit") {
+						phpunit_cmd = function()
+							return {
+								"docker",
+								"--log-level", "ERROR",
+								"compose",
+								"-f", "../docker-compose.yml",
+								"-f", "docker-compose.yml",
+								"exec", "centralstation",
+								"bin/phpunit",
+								"--config", "app/phpunit.xml.dist"
+							}
+						end
+					},
 				}
 			})
 		end,
