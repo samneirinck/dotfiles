@@ -18,6 +18,11 @@ return {
           })
         end,
       },
+      display = {
+        action_palette = {
+          provider = "telescope",
+        },
+      },
       strategies = {
         chat = {
           adapter = "copilot",
@@ -28,7 +33,8 @@ return {
       }
     },
     keys = {
-      { "<leader>ac", "<cmd>CodeCompanionChat<CR>", desc = "Toggle Code Companion Chat", mode = { "n", "v" } }
+      { "<leader>ac", "<cmd>CodeCompanionChat<CR>",    desc = "Toggle Code Companion Chat", mode = { "n", "v" } },
+      { "<leader>aa", "<cmd>CodeCompanionActions<CR>", desc = "Code Companion Actions",     mode = { "n", "v" } },
     }
   }
 }
