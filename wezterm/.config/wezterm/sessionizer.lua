@@ -37,6 +37,7 @@ M.toggle = function(window, pane)
   }
 
   add_if_exists(args, os.getenv("HOME") .. "/Showpad")
+  add_if_exists(args, os.getenv("HOME") .. "/Showpad/SBE")
   add_if_exists(args, os.getenv("HOME") .. "/Code/github.com")
 
   local success, stdout, stderr = wezterm.run_child_process(args)
