@@ -5,6 +5,7 @@ return {
       "nvim-lua/plenary.nvim",
       "nvim-treesitter/nvim-treesitter",
     },
+    config = true,
     opts = {
       adapters = {
         copilot = function()
@@ -27,7 +28,7 @@ return {
       }
     },
     keys = {
-      { "<leader>ac", "<cmd>CodeCompanionChat<CR>", desc = "Toggle Code Companion Chat" }
+      { "<leader>ac", "<cmd>CodeCompanionChat<CR>", desc = "Toggle Code Companion Chat", mode = { "n", "v" } }
     }
   }
 }
