@@ -1,12 +1,16 @@
 return {
   {
-    'echasnovski/mini.diff',
+    'echasnovski/mini.nvim',
     version = false,
-    config  = true,
-    opts    = {
-      view = {
-        style = 'sign'
-      }
-    },
+    config = function()
+      require('mini.ai').setup()
+      require('mini.pairs').setup()
+      require('mini.diff').setup({
+        view = {
+          style = 'sign'
+        }
+      })
+      require('mini.icons').setup()
+    end,
   },
 }
