@@ -68,13 +68,12 @@ M.toggle = function(window, pane)
         else
           wezterm.log_info("Selected " .. label)
           args = nil
-          if id == "staging" then
-            args = { os.getenv("SHELL"), "-c", "eval (assume-it --export); and exec fish" }
-          end
+          local current_workspace = window:active_workspace()
           win:perform_action(
             act.SwitchToWorkspace({ name = id, spawn = { args = args, cwd = label } }),
             pane
           )
+          wezterm.GLOBAL.previous_workspace = current_workspace
         end
       end),
       fuzzy = true,
@@ -84,5 +83,17 @@ M.toggle = function(window, pane)
     pane
   )
 end
+
+M.switch_to_previous_workspace = function(window, pane)
+  local current_workspace = window:active_workspace()
+  local workspace = wezterm.GLOBAL.previous_workspace
+
+  if current_workspace == workspace or wezterm.GLOBAL.previous_workspace == nil then
+    return
+  end
+
+  M.switch_workspace(window, pane, workspace)
+end
+
 
 return M

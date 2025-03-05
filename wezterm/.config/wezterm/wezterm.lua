@@ -100,6 +100,11 @@ config.keys = {
     action = wezterm.action.ShowLauncherArgs { flags = "FUZZY|WORKSPACES", title = "Workspaces" }
   },
   {
+    key = "a",
+    mods = "LEADER",
+    action = wezterm.action_callback(sessionizer.switch_to_previous_workspace)
+  },
+  {
     key = "s",
     mods = "LEADER",
     action = wezterm.action_callback(sessionizer.toggle)
