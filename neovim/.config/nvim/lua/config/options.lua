@@ -48,3 +48,6 @@ vim.opt.inccommand = 'split'
 vim.opt.cursorline = true
 
 vim.shiftwidth = 4
+
+-- Nicer diff
+vim.opt.fillchars:append { diff = ' ' }
