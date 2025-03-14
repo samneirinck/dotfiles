@@ -33,9 +33,11 @@ return {
       }
     },
     keys = {
-      { "<leader>ac", "<cmd>CodeCompanionChat<CR>",    desc = "AI - Chat",             mode = { "n", "v" } },
-      { "<leader>aa", "<cmd>CodeCompanionActions<CR>", desc = "AI - Actions",          mode = { "n", "v" } },
-      { "<leader>ai", "<cmd>CodeCompanion<CR>",        desc = "AI - Inline assistant", mode = { "n", "v" } },
+      { "<leader>ac", "<cmd>CodeCompanionChat<CR>",      desc = "AI - [C]hat",             mode = { "n", "v" } },
+      { "<leader>aa", "<cmd>CodeCompanionActions<CR>",   desc = "AI - [A]ctions",          mode = { "n", "v" } },
+      { "<leader>ai", "<cmd>CodeCompanion<CR>",          desc = "AI - [I]nline assistant", mode = { "n", "v" } },
+      { "<leader>ax", "<cmd>CodeCompanion /explain<CR>", desc = "AI - E[x]plain",          mode = { "v" } },
+      { "<leader>am", "<cmd>CodeCompanion /commit<CR>",  desc = "AI - Commit [M]essage",   mode = { "n" } },
     }
   }
 }
