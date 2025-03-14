@@ -26,6 +26,10 @@ return {
       strategies = {
         chat = {
           adapter = "copilot",
+          roles = {
+            llm = "Syntax Error Sally",
+            user = "Sam"
+          },
         },
         inline = {
           adapter = "copilot",
@@ -41,3 +45,4 @@ return {
     }
   }
 }
+
