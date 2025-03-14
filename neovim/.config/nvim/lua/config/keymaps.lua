@@ -15,3 +15,9 @@ vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagn
 -- Quickfix
 vim.keymap.set('n', '[q', '<cmd>cprev<CR>', { desc = 'Go to previous quickfix item' })
 vim.keymap.set('n', ']q', '<cmd>cnext<CR>', { desc = 'Go to next quickfix item' })
+
+-- Center screen when scrolling up (C-u)
+vim.keymap.set('n', '<C-u>', '<C-u>zz')
+
+-- Center screen when scrolling down (C-d)
+vim.keymap.set('n', '<C-d>', '<C-d>zz')
