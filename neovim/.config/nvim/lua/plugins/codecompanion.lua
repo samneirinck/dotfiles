@@ -27,12 +27,61 @@ return {
         chat = {
           adapter = "copilot",
           roles = {
-            llm = "Syntax Error Sally",
+            llm = "🤖",
             user = "Sam"
           },
         },
         inline = {
           adapter = "copilot",
+        }
+      },
+      prompt_library = {
+        ["Generate a Commit Message"] = {
+          strategy = "inline",
+          description = "Generate the commit message",
+          opts = {
+            placement = 'add',
+            auto_submit = true,
+          },
+          prompts = {
+            {
+              role = "user",
+              content = function()
+                return string.format(
+                  [[You are an expert at generating concise commit messages. Given the git diff listed below, please generate a commit message for me:
+
+```diff
+%s
+```
+
+When unsure about the module names to use in the commit message, you can refer to the last 20 commit messages in this repository:
+
+```
+%s
+```
+
+Current branch nane:
+```
+%s
+```
+If the branch name contains a JIRA ticket reference, prefix the message with the JIRA ticket reference.
+
+A few examples:
+- SP-1243 Fix issues with the login page
+- SP-1244 Add a new feature to the dashboard
+
+Output only the commit message without any explanations and follow-up suggestions.
+]],
+                  vim.fn.system('git diff --no-ext-diff --staged'),
+                  vim.fn.system('git log --pretty=format:"%s" -n 20'),
+                  vim.fn.system('git branch --show-current')
+                )
+              end,
+              opts = {
+                contains_code = true,
+              },
+            }
+          }
         }
       }
     },
@@ -45,4 +94,3 @@ return {
     }
   }
 }
-
