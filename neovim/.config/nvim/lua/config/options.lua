@@ -51,3 +51,9 @@ vim.shiftwidth = 2
 
 -- Nicer diff
 vim.opt.fillchars:append { diff = ' ' }
+
+vim.diagnostic.config({
+  virtual_lines = {
+    current_line = true,
+  }
+})
