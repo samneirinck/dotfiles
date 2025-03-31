@@ -15,3 +15,7 @@ vim.keymap.set('n', '<C-u>', '<C-u>zz')
 
 -- Center screen when scrolling down (C-d)
 vim.keymap.set('n', '<C-d>', '<C-d>zz')
+
+-- Lsp keymaps
+vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { desc = 'Goto Definition' })
+vim.keymap.set('n', 'gI', vim.lsp.buf.implementation, { desc = 'Goto Implementation' })

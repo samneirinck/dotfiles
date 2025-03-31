@@ -57,3 +57,5 @@ vim.diagnostic.config({
     current_line = true,
   }
 })
+
+vim.lsp.enable({ 'luals', 'pyright', 'phpactor' })
