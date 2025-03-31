@@ -58,4 +58,4 @@ vim.diagnostic.config({
   }
 })
 
-vim.lsp.enable({ 'luals', 'pyright', 'phpactor' })
+vim.lsp.enable({ 'luals', 'pyright', 'phpactor', 'ruff' })
