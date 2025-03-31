@@ -67,7 +67,7 @@ M.toggle = function(window, pane)
           wezterm.log_info("Cancelled")
         else
           wezterm.log_info("Selected " .. label)
-          M.switch_workspace(window, pane, id)
+          M.switch_workspace(window, pane, id, label)
         end
       end),
       fuzzy = true,
@@ -89,7 +89,7 @@ M.switch_to_previous_workspace = function(window, pane)
   M.switch_workspace(window, pane, workspace)
 end
 
-M.switch_workspace = function(window, pane, workspace)
+M.switch_workspace = function(window, pane, workspace, cwd)
   local current_workspace = window:active_workspace()
   if current_workspace == workspace then
     return
@@ -98,6 +98,9 @@ M.switch_workspace = function(window, pane, workspace)
   window:perform_action(
     act.SwitchToWorkspace({
       name = workspace,
+      spawn = {
+        cwd = cwd,
+      }
     }),
     pane
   )
