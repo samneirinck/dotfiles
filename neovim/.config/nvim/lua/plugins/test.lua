@@ -28,20 +28,7 @@ return {
 			require("neotest").setup({
 				adapters = {
 					require("neotest-python"),
-					require("neotest-phpunit") {
-						phpunit_cmd = function()
-							return {
-								"docker",
-								"--log-level", "ERROR",
-								"compose",
-								"-f", "../docker-compose.yml",
-								"-f", "docker-compose.yml",
-								"exec", "centralstation",
-								"bin/phpunit",
-								"--config", "app/phpunit.xml.dist"
-							}
-						end
-					},
+					require("neotest-phpunit"),
 				}
 			})
 		end,
@@ -49,6 +36,10 @@ return {
 			{ "<leader>tf", function() require("neotest").run.run(vim.fn.expand("%")) end, desc = "Test file" },
 			{ "<leader>tt", function() require("neotest").run.run() end,                   desc = "Test nearest" },
 			{ "<leader>tl", function() require("neotest").run.run_last() end,              desc = "Test last" },
+			{ "<leader>ts", "<cmd>Neotest summary toggle<CR>",                             desc = "Test summary" },
+			{ "<leader>to", "<cmd>Neotest output<CR>",                                     desc = "Test output" },
+			{ "<leader>tO", "<cmd>Neotest output-panel toggle<CR>",                        desc = "Test output panel" },
+
 		},
 	}
 }
