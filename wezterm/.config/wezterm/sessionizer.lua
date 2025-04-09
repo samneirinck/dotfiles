@@ -1,4 +1,5 @@
 local wezterm = require("wezterm")
+local mux = wezterm.mux
 local act = wezterm.action
 
 local M = {}
@@ -22,6 +23,14 @@ end
 local fd = "/opt/homebrew/bin/fd"
 if not file_exists(fd) then
   fd = "/usr/local/bin/fd"
+end
+
+local has_value = function(tab, val)
+  for _index, value in ipairs(tab) do
+    if value == val then return true end
+  end
+
+  return false
 end
 
 M.toggle = function(window, pane)
@@ -67,7 +76,7 @@ M.toggle = function(window, pane)
           wezterm.log_info("Cancelled")
         else
           wezterm.log_info("Selected " .. label)
-          M.switch_workspace(window, pane, id, label)
+          M.switch_workspace(id, label)
         end
       end),
       fuzzy = true,
@@ -78,7 +87,7 @@ M.toggle = function(window, pane)
   )
 end
 
-M.switch_to_previous_workspace = function(window, pane)
+M.switch_to_previous_workspace = function(window)
   local current_workspace = window:active_workspace()
   local workspace = wezterm.GLOBAL.previous_workspace
 
@@ -86,25 +95,35 @@ M.switch_to_previous_workspace = function(window, pane)
     return
   end
 
-  M.switch_workspace(window, pane, workspace)
+  M.switch_workspace(workspace)
 end
 
-M.switch_workspace = function(window, pane, workspace, cwd)
-  local current_workspace = window:active_workspace()
+M.switch_workspace = function(workspace, cwd)
+  current_workspace = mux.get_active_workspace()
   if current_workspace == workspace then
     return
   end
 
-  window:perform_action(
-    act.SwitchToWorkspace({
-      name = workspace,
-      spawn = {
-        cwd = cwd,
-      }
-    }),
-    pane
-  )
   wezterm.GLOBAL.previous_workspace = current_workspace
+
+  if has_value(mux.get_workspace_names(), workspace) then
+    mux.set_active_workspace(workspace)
+    return
+  end
+
+  local tab, new_pane, window = mux.spawn_window { workspace = workspace, cwd = cwd }
+  tab:set_title(workspace)
+
+
+  local neovim, neovim_pane = window:spawn_tab {}
+  neovim_pane:send_text("nvim .\n")
+  neovim:set_title("neovim")
+
+  local long = window:spawn_tab {}
+  long:set_title("long-running")
+
+  new_pane:activate()
+  mux.set_active_workspace(workspace)
 end
 
 return M
