@@ -46,6 +46,7 @@ M.toggle = function(window, pane)
   }
 
   add_if_exists(args, os.getenv("HOME") .. "/Showpad")
+  add_if_exists(args, os.getenv("HOME") .. "/Showpad/local-development/infrastructure")
   add_if_exists(args, os.getenv("HOME") .. "/Showpad/SBE")
   add_if_exists(args, os.getenv("HOME") .. "/Code/github.com")
 
