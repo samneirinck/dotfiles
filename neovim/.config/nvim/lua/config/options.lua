@@ -61,4 +61,4 @@ vim.diagnostic.config({
   }
 })
 
-vim.lsp.enable({ 'luals', 'pyright', 'phpactor', 'ruff', 'typescript-language-server' })
+vim.lsp.enable({ 'luals', 'pyright', 'phpactor', 'ruff', 'typescript-language-server', 'kotlinlsp' })
