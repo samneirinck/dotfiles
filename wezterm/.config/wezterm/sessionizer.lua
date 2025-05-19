@@ -22,7 +22,7 @@ end
 
 local fd = "/opt/homebrew/bin/fd"
 if not file_exists(fd) then
-  fd = "/usr/local/bin/fd"
+  fd = "/usr/bin/fd"
 end
 
 local has_value = function(tab, val)
