@@ -23,6 +23,11 @@ config.window_padding = {
 config.leader = { key = "a", mods = "CTRL", timeout_milliseconds = 1000 }
 config.scrollback_lines = 10000
 
+local function is_linux()
+  return wezterm.target_triple:find('linux') ~= nil
+end
+
+
 local function resize_pane(key, direction)
   return {
     key = key,
@@ -135,6 +140,17 @@ config.keys = {
     }
   },
 }
+
+wezterm.log_info("WezTerm configuration loaded")
+if is_linux() then
+  for i = 1, 9 do
+    table.insert(config.keys, {
+      key = tostring(i),
+      mods = 'ALT',
+      action = wezterm.action.ActivateTab(i - 1)
+    })
+  end
+end
 
 config.key_tables = {
   resize_panes = {
