@@ -39,7 +39,7 @@ return {
       },
       per_filetype = {
         codecompanion = { "codecompanion" },
-        gitcommit = { "commit-branch" },
+        -- gitcommit = { "commit-branch" },
       },
     },
   },
