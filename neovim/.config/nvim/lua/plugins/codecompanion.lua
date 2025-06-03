@@ -5,6 +5,7 @@ return {
       "nvim-lua/plenary.nvim",
       "nvim-treesitter/nvim-treesitter",
       "j-hui/fidget.nvim",
+      'ravitemer/codecompanion-history.nvim',
     },
     config = true,
     opts = {
@@ -13,7 +14,7 @@ return {
           return require("codecompanion.adapters").extend("copilot", {
             schema = {
               model = {
-                default = "claude-3.7-sonnet"
+                default = "claude-sonnet-4"
               }
             }
           })
@@ -39,6 +40,12 @@ return {
         vectorcode = {
           opts = {
             add_tool = true,
+          }
+        },
+        history = {
+          enabled = true,
+          opts = {
+
           }
         }
       },
