@@ -7,13 +7,6 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   end,
 })
 
-vim.api.nvim_create_autocmd('BufWritePre', {
-  pattern = "*.lua",
-  callback = function()
-    vim.lsp.buf.format()
-  end,
-})
-
 vim.api.nvim_create_autocmd("FileType", {
   pattern = "gitcommit",
   callback = function()
