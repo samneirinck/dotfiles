@@ -12,7 +12,7 @@ return {
         'pyright',
         'phpactor',
         'typescript-language-server',
-        'html-lsp',
+        'superhtml',
         'templ',
         'lua-language-server',
         'ruff'
