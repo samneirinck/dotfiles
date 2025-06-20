@@ -1,3 +1,5 @@
+local isWorkLaptop = require("config.utils").isWorkLaptop
+
 return {
   {
     "olimorris/codecompanion.nvim",
@@ -13,9 +15,7 @@ return {
         copilot = function()
           return require("codecompanion.adapters").extend("copilot", {
             schema = {
-              model = {
-                default = "claude-sonnet-4"
-              }
+              model = isWorkLaptop() and { default = "claude-sonnet-4" } or {}
             }
           })
         end,
