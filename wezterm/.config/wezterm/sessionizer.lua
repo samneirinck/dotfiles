@@ -120,6 +120,9 @@ M.switch_workspace = function(workspace, cwd)
   neovim_pane:send_text("nvim .\n")
   neovim:set_title("neovim")
 
+  local ai = window:spawn_tab {}
+  ai:set_title("ai")
+
   local long = window:spawn_tab {}
   long:set_title("long-running")
 
