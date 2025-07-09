@@ -3,6 +3,7 @@ return {
 	'nvim-treesitter/nvim-treesitter',
 	dependencies = {
 		'nvim-treesitter/nvim-treesitter-textobjects',
+		'OXY2DEV/markview.nvim',
 	},
 	build = ':TSUpdate',
 	opts = {
@@ -16,4 +17,3 @@ return {
 		require('nvim-treesitter.configs').setup(opts)
 	end,
 }
-
