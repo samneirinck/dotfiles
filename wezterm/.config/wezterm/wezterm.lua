@@ -1,5 +1,5 @@
 local wezterm = require 'wezterm'
-local sessionizer = require 'sessionizer'
+local workspace_switcher = wezterm.plugin.require("https://github.com/MLFlexer/smart_workspace_switcher.wezterm")
 local config = wezterm.config_builder()
 
 config.color_scheme = "Catppuccin Mocha"
@@ -105,14 +105,14 @@ config.keys = {
     action = wezterm.action.ShowLauncherArgs { flags = "FUZZY|WORKSPACES", title = "Workspaces" }
   },
   {
-    key = "a",
-    mods = "LEADER",
-    action = wezterm.action_callback(sessionizer.switch_to_previous_workspace)
-  },
-  {
     key = "s",
     mods = "LEADER",
-    action = wezterm.action_callback(sessionizer.toggle)
+    action = workspace_switcher.switch_workspace(),
+  },
+  {
+    key = "a",
+    mods = "LEADER",
+    action = workspace_switcher.switch_to_prev_workspace(),
   },
 
   -- move between split panes
@@ -152,6 +152,23 @@ if is_linux() then
   end
 end
 
+wezterm.on("smart_workspace_switcher.workspace_switcher.created", function(window, workspace)
+  local shell_tab = window:active_tab()
+  shell_tab:set_title("\u{e795} " .. (workspace:match("([^/\\]+)/?$") or workspace))
+
+  local neovim, neovim_pane = window:spawn_tab {}
+  neovim_pane:send_text("nvim\n")
+  neovim:set_title("\u{f36f} neovim")
+
+  local ai = window:spawn_tab {}
+  ai:set_title("\u{f16a4} ai")
+
+  local long = window:spawn_tab {}
+  long:set_title("\u{f0f86} long-running")
+
+  shell_tab:activate()
+end)
+
 config.key_tables = {
   resize_panes = {
     resize_pane('j', 'Down'),
@@ -160,5 +177,8 @@ config.key_tables = {
     resize_pane('l', 'Right'),
   },
 }
+
+
+workspace_switcher.apply_to_config(config)
 
 return config
