@@ -50,7 +50,8 @@ vim.opt.cursorline    = true
 vim.shiftwidth        = 2
 
 -- Allow project specific settings
-vim.opt.exrc          = true
+vim.o.exrc            = true
+vim.o.secure          = true
 
 -- Nicer diff
 vim.opt.fillchars:append { diff = ' ' }
