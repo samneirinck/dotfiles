@@ -12,13 +12,15 @@ return {
     config = true,
     opts = {
       adapters = {
-        copilot = function()
-          return require("codecompanion.adapters").extend("copilot", {
-            schema = {
-              model = isWorkLaptop() and { default = "claude-sonnet-4" } or {}
-            }
-          })
-        end,
+        http = {
+          copilot = function()
+            return require("codecompanion.adapters").extend("copilot", {
+              schema = {
+                model = isWorkLaptop() and { default = "claude-sonnet-4" } or {}
+              }
+            })
+          end,
+        },
       },
       display = {
         action_palette = {
