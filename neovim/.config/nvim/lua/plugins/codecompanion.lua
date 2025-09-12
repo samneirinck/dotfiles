@@ -21,6 +21,31 @@ return {
             })
           end,
         },
+        acp = {
+          gemini_cli = function()
+            return require("codecompanion.adapters").extend("gemini_cli", {
+              commands = {
+                flash = {
+                  "gemini",
+                  "--experimental-acp",
+                  "-m",
+                  "gemini-2.5-flash",
+                },
+                pro = {
+                  "gemini",
+                  "--experimental-acp",
+                  "-m",
+                  "gemini-2.5-pro",
+                },
+              },
+              defaults = {
+                -- auth_method = "gemini-api-key", -- "oauth-personal" | "gemini-api-key" | "vertex-ai"
+                auth_method = "oauth-personal",
+                -- auth_method = "vertex-ai",
+              },
+            })
+          end,
+        }
       },
       display = {
         action_palette = {
@@ -45,7 +70,7 @@ return {
           }
         },
         history = {
-          enabled = true,
+          enabled = false,
           opts = {
 
           }
