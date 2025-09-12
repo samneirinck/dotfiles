@@ -62,4 +62,5 @@ vim.diagnostic.config({
   }
 })
 
-vim.lsp.enable({ 'html', 'lua_ls', 'basedpyright', 'ruff', 'phpactor', 'typescript-language-server', 'kotlinlsp', 'gopls' })
+vim.lsp.enable({ 'html', 'lua_ls', 'basedpyright', 'ruff', 'phpactor', 'typescript-language-server', 'kotlinlsp', 'gopls',
+  'templ' })
