@@ -7,7 +7,7 @@ return {
 	},
 	build = ':TSUpdate',
 	opts = {
-		ensure_installed = { 'bash', 'diff', 'go', 'lua', 'python', 'html', 'markdown', 'vim', 'vimdoc', 'php', 'javascript', 'typescript', 'templ' },
+		ensure_installed = { 'bash', 'diff', 'go', 'lua', 'python', 'html', 'markdown', 'markdown_inline', 'vim', 'vimdoc', 'php', 'javascript', 'typescript', 'templ' },
 
 		highlight = { enable = true },
 		indent = { enable = true },

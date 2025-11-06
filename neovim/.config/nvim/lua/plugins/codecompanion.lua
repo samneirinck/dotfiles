@@ -13,6 +13,9 @@ return {
     opts = {
       adapters = {
         http = {
+          opts = {
+            show_defaults = false
+          },
           copilot = function()
             return require("codecompanion.adapters").extend("copilot", {
               schema = {
@@ -22,6 +25,9 @@ return {
           end,
         },
         acp = {
+          opts = {
+            show_defaults = false
+          },
           gemini_cli = function()
             return require("codecompanion.adapters").extend("gemini_cli", {
               commands = {
@@ -45,6 +51,18 @@ return {
               },
             })
           end,
+          auggie = function()
+            return require("codecompanion.adapters").extend("gemini_cli", {
+              name = "auggie",
+              formatted_name = "Auggie",
+              commands = {
+                default = {
+                  "auggie",
+                  "--acp"
+                }
+              }
+            })
+          end
         }
       },
       display = {
@@ -78,7 +96,7 @@ return {
       },
       strategies = {
         chat = {
-          adapter = "copilot",
+          adapter = isWorkLaptop() and "auggie" or "copilot",
           roles = {
             llm = "🤖",
             user = "👤",

@@ -9,7 +9,6 @@ return {
     opts = {
       ensure_installed = {
         'gopls',
-        'pyright',
         'basedpyright',
         'phpactor',
         'typescript-language-server',
