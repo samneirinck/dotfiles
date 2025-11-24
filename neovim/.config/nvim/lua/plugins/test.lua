@@ -22,13 +22,15 @@ return {
 			"antoinemadec/FixCursorHold.nvim",
 			"nvim-treesitter/nvim-treesitter",
 			"nvim-neotest/neotest-python",
-			"olimorris/neotest-phpunit"
+			"olimorris/neotest-phpunit",
+			"marilari88/neotest-vitest"
 		},
 		config = function()
 			require("neotest").setup({
 				adapters = {
 					require("neotest-python"),
 					require("neotest-phpunit"),
+					require("neotest-vitest")
 				}
 			})
 		end,
