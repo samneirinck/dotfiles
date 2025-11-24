@@ -51,19 +51,8 @@ return {
               },
             })
           end,
-          auggie = function()
-            return require("codecompanion.adapters").extend("gemini_cli", {
-              name = "auggie",
-              formatted_name = "Auggie",
-              commands = {
-                default = {
-                  "auggie",
-                  "--acp"
-                }
-              }
-            })
-          end
-        }
+          auggie = "auggie_cli"
+        },
       },
       display = {
         action_palette = {
@@ -96,7 +85,7 @@ return {
       },
       strategies = {
         chat = {
-          adapter = isWorkLaptop() and "auggie" or "copilot",
+          adapter = isWorkLaptop() and "augment" or "copilot", -- Using our augment adapter on work laptop
           roles = {
             llm = "🤖",
             user = "👤",
