@@ -3,7 +3,13 @@ return {
     'WhoIsSethDaniel/mason-tool-installer.nvim',
     dependencies = {
       'williamboman/mason.nvim',
-      config = true
+      config = true,
+      opts = {
+        registries = {
+          "github:mason-org/mason-registry",
+          "github:Crashdummyy/mason-registry",
+        },
+      }
     },
     config = true,
     opts = {
@@ -15,7 +21,9 @@ return {
         'superhtml',
         'templ',
         'lua-language-server',
-        'ruff'
+        'ruff',
+        'roslyn',
+        'eslint_d',
       },
       auto_update = true,
     },
