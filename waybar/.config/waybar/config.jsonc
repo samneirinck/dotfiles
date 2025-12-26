@@ -34,8 +34,8 @@
         "separate-outputs": true
     },
     "clock": {
-        "interval": 1,
-        "format": "<span foreground='#f5c2e7'>  </span>{:%H:%M:%S}",
+        "interval": 20,
+        "format": "<span foreground='#f5c2e7'>  </span>{:%H:%M}",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
         "format-alt": "{:%Y-%m-%d}"
     },
